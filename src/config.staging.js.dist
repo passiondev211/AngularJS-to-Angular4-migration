@@ -1,0 +1,24 @@
+var globalSettings = {}
+globalSettings.configList = [];
+globalSettings.configList['tokenKey'] = undefined; // TODO replace with token from authentication ajax call
+globalSettings.configList['userId'] = undefined; // TODO replace with X-UserId from authentication ajax call
+globalSettings.configList['tokenType'] = undefined; // TODO replace with type from authentication ajax call default=Bearer
+globalSettings.configList['facebookAppId'] = '936047059768219'; // Facebook Application ID
+globalSettings.configList['GoogleAnalyticsId'] = 'UA-61202681-2'; // Google analytics ID
+globalSettings.configList['apiEndpoint'] = 'http://10.168.1.7:8001'; // Api Endpoint
+globalSettings.configList['authUrl.login'] = 'http://10.168.1.7:8001/heimdall/login'; // heimdall authentication gateway url
+globalSettings.configList['authUrl.logout'] = 'http://10.168.1.7:8001/heimdall/logout'; // heimdall authentication gateway url
+globalSettings.configList['mediaEndpoint'] = 'http://testmedia.livup.co'; // media root utl
+globalSettings.configList['defaultImage'] = 'images/default.png'; // default image type
+globalSettings.configList['paypalEndpoint'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; // paypal endpoint url
+globalSettings.get = function (key) {
+  if (key in this.configList)
+    return this.configList[key];
+  else return undefined;
+};
+globalSettings.set = function (key,value) {
+  if (key in this.configList)
+    this.configList[key] = value;
+  else
+    console.log("no such key "+key+" in globalSettings");
+};
