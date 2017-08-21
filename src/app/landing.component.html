@@ -1,0 +1,247 @@
+
+    <section id="intro" class="intro-section" style="position:relative;" [ngStyle]="{'background':'url(../assets/img/'+dataCamp+'/header-img.jpg)'}" >
+        <div class="container" style="margin-bottom:120px; height:550px ">
+            <div class="row header">
+                <div class="col-lg-12">
+                    <span class="title-header StreetscriptRedux " style="display:block;font-size:64px;color: white;padding-top: 100px;">Up your Yogi.</span>
+                </div>
+                <div class="col-lg-12">
+                  <p class="slegon" style="display:block;font-size:22px;color: white; padding-top:15px;padding-bottom:50px;">Find yoga classes you'll love in London with awesome
+                    <br/>communities hosted by people Living Up</p>
+                    <a [routerLink]="['/register']" class="btn-register" style="padding-top:15px;padding-bottom:15px;font-weight:100;letter-spacing:3px;font-size: 18px;border-radius: 50px !important;padding-left:30px;padding-right:30px;	font-family: 'Merriweather Sans', sans-serif;" > JOIN NOW </a>
+                    <span class="title-header StreetscriptRedux " style="display:block;font-size:24px;color: white;padding-top: 50px;">It's absolutely free!</span>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-12" style="position: absolute;bottom:0px; height:130px;text-align:left;padding-left:500px">
+a          <span class="title-header StreetscriptRedux " style="display:block;font-size:34px;color: white;padding-top: 5px">Find your balance!</span>
+          <p  style="font-family:'Merriweather Sans';font-style:italic;display:block;font-size:18px;color: white; padding-top:15px;padding-bottom:50px;">
+            We help you find wonderful yoga classes held by independent yoga instructors.</p>
+        </div>
+    </section>
+    <section *ngIf="searchTotal != 0" id="recentevent" class="recentevent-section">
+            <div class="container">
+                <div class="row header">
+                    <div class="col-lg-12 " style="text-align:center;">
+                        <span style="font-size:34pt;margin-top:35px;margin-bottom:35px;display:block" class="title-header StreetscriptRedux"> Recent Events</span>
+                    </div>
+                    <div class="col-lg-12">
+                    	 <p class="slegon"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let result of searchHits" [ngSwitch]="result._type">
+                    <section *ngSwitchCase="'activitySummary'" class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-header body-post-act">
+                                <a ng-href="" style="color: #0079cf" [routerLink]="['/activites',result._id]" *ngIf="result._source.profileImgURI">
+                                    <img  [src]="getProfileImgURI(result._source.profileImgURI)" class="img-responsive" alt="" style="height: 250px">
+                                </a>
+                                <a ng-href="" style="color: #0079cf" [routerLink]="['/activites',result._id]" *ngIf="!result._source.profileImgURI">
+                                    <img  [src]="getProfileImgURI('')" class="img-responsive" alt="" style="height: 250px">
+                                </a>
+                            </div>
+                            <div class="panel-body footer-post" style="box-shadow: 0px 0px 2px 2px #e3e2e0;">
+                                <div>
+                                    <div class="details" style="padding-left:20px; padding-right:20px;">
+                                        <a ng-href="" [routerLink]="['/activites',result._id]">
+                                            <b style="color:black">{{ result._source.name }}</b>
+                                        </a>
+                                        <p style="display: block; /* Fallback for non-webkit */display: -webkit-box; -webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
+                                            {{ result._source.bio }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+              </div>
+            </div>
+			
+			<!--<div class="container" style="text-align:center">
+				<a class="btn-register" [routerLink]="['/']" style="color:#fff; background-color:#f58a54;padding-left:30px;padding-right:30px;padding-top:15px;padding-bottom:15px;font-weight:100;letter-spacing:3px;font-size: 18px;border-radius: 50px !important;	font-family: 'Merriweather Sans', sans-serif;">View More</a>
+			</div>-->
+			
+        </section>
+		
+        <div  id="awsome" class="awsome-section" style="background-color:#fff;">
+                <div  style="width:100%">
+                    <div class="row header">
+                        <div class="col-lg-12 " style="text-align:center;background-color:#fff;">
+                            <span style="font-size:34pt;margin-top:35px;margin-bottom:35px;display:block" class="title-header StreetscriptRedux">Awesome activities <br/> you can discover with LivUp</span>
+                        </div>
+						
+						<div style="background-color:#fff;" class="m-awsome">
+							<p class="AZ_title" style="text-align: center">
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(0)">A L L</a>
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(1)">Y O G A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(2)">P I L A T E S</a><br/> 
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(3)">S A L S A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(4)">K I Z O M B A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(5)">B A C H A T A</a><br/>     
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(6)">M A R T I A L   A R T S</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(7)">C O O K I N G   C L A S S E S</a><br/>     
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(8)">T E N N I S</a>	
+							</p>
+							<br/><br/>
+                            <div class="row">
+                                <div class="awsome-tag " style="background-color:#44bdd8;">cmpId1-Aws1</div>
+                                <div class="awsome-tag" [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg1.jpg)'}"></div>
+                                <div class="awsome-tag" [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg2.jpg)'}">cmpId1-Aws2</div>
+                            </div>
+                            <div class="row">
+                                <div class="awsome-tag " [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg3.jpg)'}">cmpId1-Aws3</div>
+                                <div class="awsome-tag" style="background-color:#efb42c;">cmpId1-Aws4</div>
+                                <div class="awsome-tag" [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg4.jpg)'}"></div>
+                            </div>
+                                <div class="row">
+                                <div class="awsome-tag" style="background-color:#d6d142;">cmpId1-Aws5</div>
+                                <div class="awsome-tag " [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg5.jpg)'}"></div>
+                                <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                  Anything else you can think of...</div>
+                            </div>
+                        </div>
+								
+                        <div style="background-color:#fff;"  class="col-lg-12 d-awsome">
+							<p class="AZ_title" style="text-align: center">
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(0)">A L L</a>
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(1)">Y O G A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(2)">P I L A T E S</a>
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(3)">S A L S A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(4)">K I Z O M B A</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(5)">B A C H A T A</a>     
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(6)">M A R T I A L   A R T S</a>    
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(7)">C O O K I N G   C L A S S E S</a>     
+								<a ng-href="" class="awsome-section-tag" (click)="selectSection(8)">T E N N I S</a>	
+							</p><br/><br/>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#44bdd8;">cmpId1-Aws1</div>
+                            <div class="awsome-tag " [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg1.jpg)'}"></div>
+                            <div class="awsome-tag" [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg2.jpg)'}">cmpId1-Aws2</div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag " [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg3.jpg)'}">cmpId1-Aws3</div>
+                            <div class="awsome-tag" style="background-color:#efb42c;">cmpId1-Aws4</div>
+                            <div class="awsome-tag" [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg4.jpg)'}"></div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#d6d142;">cmpId1-Aws5</div>
+                            <div class="awsome-tag " [ngStyle]=" {'background':'url(../assets/img/'+awsUrl+'/awsome_bg5.jpg)'}"></div>
+                            <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                Anything else you can think of...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!--div  *ngIf="dataCamp == 'cmpId2'" id="awsome" class="awsome-section">
+                <div  style="width:100%">
+                    <div class="row header">
+                        <div class="col-lg-12 " style="text-align:center;background-color:#fff;">
+                            <span style="font-size:34pt;margin-top:35px;margin-bottom:35px;display:block" class="title-header StreetscriptRedux">SecondCase - Awesome activities <br/> you can discover with LivUp</span>
+                        </div>
+						<div style="background-color:#fff;" class="m-awsome">
+                            <div class="row">
+                                <div class="awsome-tag " style="background-color:#44bdd8;">cmpId2-Aws1</div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/cmpId2/awsome_bg1.jpg');"></div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/cmpId2/awsome_bg2.jpg');">cmpId2-Aws2</div>
+                            </div>
+                            <div class="row">
+                                <div class="awsome-tag " style="background-image: url('/assets/img/cmpId2/awsome_bg3.jpg');">cmpId2-Aws3</div>
+                                <div class="awsome-tag" style="background-color:#efb42c;">cmpId2-Aws4</div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/cmpId2/awsome_bg4.jpg');"></div>
+                            </div>
+                                <div class="row">
+                                <div class="awsome-tag" style="background-color:#d6d142;">cmpId2-Aws5</div>
+                                <div class="awsome-tag " style="background-image: url('/assets/img/cmpId2/awsome_bg5.jpg');"></div>
+                                <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                  Anything else you can think of...</div>
+                            </div>
+                        </div>
+								
+                        <div style="background-color:#fff;"  class="col-lg-12 d-awsome">
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#44bdd8;">cmpId2-Aws1</div>
+                            <div class="awsome-tag " style="background-image: url('/assets/img/cmpId2/awsome_bg1.jpg');"></div>
+                            <div class="awsome-tag" style="background-image: url('/assets/img/cmpId2/awsome_bg2.jpg');">cmpId2-Aws2</div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag " style="background-image: url('/assets/img/cmpId2/awsome_bg3.jpg');">cmpId2-Aws3</div>
+                            <div class="awsome-tag" style="background-color:#efb42c;">cmpId2-Aws4</div>
+                            <div class="awsome-tag" style="background-image: url('/assets/img/cmpId2/awsome_bg4.jpg');"></div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#d6d142;">cmpId2-Aws5</div>
+                            <div class="awsome-tag " style="background-image: url('/assets/img/cmpId2/awsome_bg5.jpg');"></div>
+                            <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                Anything else you can think of...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div  *ngIf="dataCamp == ''" id="awsome" class="awsome-section">
+                <div  style="width:100%">
+                    <div class="row header">
+                        <div class="col-lg-12 " style="text-align:center;background-color:#fff;">
+                            <span style="font-size:34pt;margin-top:35px;margin-bottom:35px;display:block" class="title-header StreetscriptRedux">Default Case - Awesome activities <br/> you can discover with LivUp</span>
+                        </div>
+						<div style="background-color:#fff;" class="m-awsome">
+                            <div class="row">
+                                <div class="awsome-tag " style="background-color:#44bdd8;">def-Aws1</div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/awsome_bg1.jpg');"></div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/awsome_bg2.jpg');">def-Aws2</div>
+                            </div>
+                            <div class="row">
+                                <div class="awsome-tag " style="background-image: url('/assets/img/awsome_bg3.jpg');">def-Aws3</div>
+                                <div class="awsome-tag" style="background-color:#efb42c;">def-Aws4</div>
+                                <div class="awsome-tag" style="background-image: url('/assets/img/awsome_bg4.jpg');"></div>
+                            </div>
+                                <div class="row">
+                                <div class="awsome-tag" style="background-color:#d6d142;">def-Aws5</div>
+                                <div class="awsome-tag " style="background-image: url('/assets/img/awsome_bg5.jpg');"></div>
+                                <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                  Anything else you can think of...</div>
+                            </div>
+                        </div>
+								
+                        <div style="background-color:#fff;"  class="col-lg-12 d-awsome">
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#44bdd8;">def-Aws1</div>
+                            <div class="awsome-tag " style="background-image: url('/assets/img/awsome_bg1.jpg');"></div>
+                            <div class="awsome-tag" style="background-image: url('/assets/img/awsome_bg2.jpg');">def-Aws2</div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag " style="background-image: url('/assets/img/awsome_bg3.jpg');">def-Aws3</div>
+                            <div class="awsome-tag" style="background-color:#efb42c;">def-Aws4</div>
+                            <div class="awsome-tag" style="background-image: url('/assets/img/awsome_bg4.jpg');"></div>
+                            </div>
+                            <div style="margin:auto;text-align:center;width:1125px">
+                            <div class="awsome-tag" style="background-color:#d6d142;">def-Aws5</div>
+                            <div class="awsome-tag " style="background-image: url('/assets/img/awsome_bg5.jpg');"></div>
+                            <div class="awsome-tag" style="padding-top:90px;padding-left:40px;padding-right:40px;background-color:#f7f3f2;font-family:'Merriweather Sans';font-size:18px;color:#666;word-wrap: break-word;line-height:1.9em;font-style: italic;font-weight:bold;">
+                                Anything else you can think of...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div-->
+            <div  id="footer-section" class="footer-section">
+                    <div class="row"  style="margin-bottom:50px;width:100%">
+                        <div class="col-lg-12 " style="text-align:center">
+                            <span style="font-size:34pt;margin-top:35px;margin-bottom:35px;display:block" class="title-header StreetscriptRedux">Are you an activity organizer</span>
+                            <p style="margin:auto;padding-top:50px;font-family:'Merriweather Sans';font-size:21px;color:#fff;word-wrap: break-word;line-height:1.9em;font-style: italic;">LivUp is an activity discovery network that allows people to find activities they love around them, connect with the providers of these activities and pay for them online. We also help our users find other activities they might love.
+                            <br/>    <br/>    <br/>It also allows activity providers to post their activities and events, connect with the fans and patrons, connect and engage with them easily as well as take payments with no hassle.</p>
+                            <br/><br/><br/>
+
+                            <a class="btn-register" [routerLink]="['/register']" style="color:#fff; background-color:#f58a54;padding-left:30px;padding-right:30px;padding-top:15px;padding-bottom:15px;font-weight:100;letter-spacing:3px;font-size: 18px;border-radius: 50px !important;	font-family: 'Merriweather Sans', sans-serif;">SIGN UP</a>
+							<br/><br/>
+						</div>
+
+                    </div>
+                </div>
